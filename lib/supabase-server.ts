@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 export async function createClient() {
+  console.log('[supabase-server] URL:', process.env.NEXT_PUBLIC_SUPABASE_URL?.slice(0, 30))
   const cookieStore = await cookies()
 
   return createServerClient(

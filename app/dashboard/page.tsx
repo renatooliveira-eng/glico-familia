@@ -7,8 +7,9 @@ export const dynamic = 'force-dynamic'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { user }, error: authError } = await supabase.auth.getUser()
 
+  if (authError) console.error('[dashboard] auth error:', authError.message)
   if (!user) redirect('/login')
 
   const { data: profile } = await supabase
