@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar'
 import GlucoseChart from '@/components/charts/GlucoseChart'
 import { getGlucoseStatus, statusStyles, statusLabels, contextLabels } from '@/lib/glucose'
 
+export const dynamic = 'force-dynamic'
+
 export default async function MeasurementsPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
